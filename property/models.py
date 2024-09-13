@@ -7,20 +7,20 @@ class Car(models.Model):
     model = models.CharField(max_length=150)
 
     odometer_value = models.PositiveIntegerField(null=False)
-    odometer_unit = models.TextChoices() # km or miles
+    odometer_unit = models.TextField() # km or miles
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class Residency(models.Model):
-    type = models.TextChoices() # house, apartment, farm. change when frontend is implemented
+    type = models.TextField() # house, apartment, farm. change when frontend is implemented
 
     name = models.CharField(max_length=150, null=False)
     year_built = models.DateField(null=False)
     address = models.CharField(max_length=250)
     
     area_value = models.FloatField(null=False, default=0)
-    area_unit = models.TextChoices() # m2 sq2 etc
+    area_unit = models.TextField() # m2 sq2 etc
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
