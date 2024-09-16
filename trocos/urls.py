@@ -23,12 +23,9 @@ urlpatterns = [
     # path('onboarding/') # onboarding for new users
 
     # Dasboard
-    
     path('dash/', include('accounts.urls')),
     path('dash/budget/', include('budget.urls')),
     path('dash/investments/', include('investments.urls')),
     path('dash/property/', include('property.urls')),
     path('dash/transactions/', include('transactions.urls')),
-    
-    path('admin/', admin.site.urls),
 ]

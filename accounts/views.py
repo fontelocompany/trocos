@@ -3,5 +3,5 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request): 
-    output = "home dashboard"
-    return render(request, 'dash/index.html', output)
+    context = {'output' : "home dashboard"}
+    return render(request, 'dash/index.html', context)

@@ -1,18 +1,17 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
 
 def login(request): 
     output = "login page"
     return render(request, 'login.html', output)
 
+# onboarding, first time init app
 def onboarding(request):
     output = 'onboarding'
     return render(request, 'onboarding/index.html', output)
 
 # Settings Pages
-
 def SettingsHome(request):
     output = 'settings home'
     return render(request, 'settings/index.html', output)
