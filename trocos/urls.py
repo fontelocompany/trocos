@@ -18,11 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('accounts/', include('accounts.urls')),
-    path('investments/', include('investments.urls')),
-    path('property/', include('property.urls')),
-    path('transactions/', include('transactions.urls')),
-    path('users/', include('users.urls')),
-    path('utils/', include('utils.urls')),
+    
+    path('', include('users.urls')), # authentication
+    # path('onboarding/') # onboarding for new users
+
+    # Dasboard
+    
+    path('dash/', include('accounts.urls')),
+    path('dash/budget/', include('budget.urls')),
+    path('dash/investments/', include('investments.urls')),
+    path('dash/property/', include('property.urls')),
+    path('dash/transactions/', include('transactions.urls')),
+    
     path('admin/', admin.site.urls),
 ]

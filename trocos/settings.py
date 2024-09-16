@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'property',
     'transactions',
     'users',
-    'utils'
+    'utils',
+    'budget'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.auth.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'trocos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,6 +108,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'users.User'
+
+# protect from non authenticated users
+
+LOGIN_URL = '/login'
+
+# LOGIN_EXEMPT_URLS = [
+#     r'^login/$',
+#     r'^logout/$',
+#     r'^register/$',
+#     # Add other URLs that should be accessible without authentication
+# ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

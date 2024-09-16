@@ -1,6 +1,8 @@
 from django.http import HttpResponse
+from django.shortcuts import render
+
 
 # Create your views here.
 def index(): 
-    output = "test"
-    return HttpResponse(output)
+    output = "transactions page"
+    return render('dash/transactions.html', output)
