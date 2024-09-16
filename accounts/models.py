@@ -16,8 +16,8 @@ class Account(models.Model):
     name = models.CharField(null=False, max_length=100)
     account_type = models.TextField() # TBD
 
-    balance = models.DecimalField(null=False, max_digits=14, decimal_places=2)
-    currency = models.TextField(null=False)
+    balance = models.DecimalField(null=False, max_digits=14, decimal_places=2, default=0.00)
+    currency = models.TextField(null=False, default='EUR')
 
     institution = models.CharField(null=False, max_length=150) # TBD
     is_active = models.BooleanField(null=False, default=True)
