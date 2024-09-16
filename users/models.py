@@ -16,6 +16,7 @@ class User(AbstractUser):
     email = models.EmailField(null=False, unique=True)
     password = models.CharField(null=False, max_length=150)
 
+    is_active = models.BooleanField(default=False) # turns true when onboarding ends
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
