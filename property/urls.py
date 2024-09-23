@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name="index"),
+    path('', views.index, name="property-home"),
     
     # Car
     path('car/new', views.SaveCar, name="add-car"),

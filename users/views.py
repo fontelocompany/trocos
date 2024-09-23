@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import User
+from .models import User, Families
 
 
 def login_view(request): 
@@ -45,7 +45,12 @@ def signup(request):
             messages.error(request, "Email already exists.")
             return render(request, 'onboarding/signup.html')
 
-        user = User.objects.create_user(email=email, password=password1)
+        family = Families(
+            name=email + ' family',
+        )
+        
+        family.save()
+        user = User.objects.create_user(email=email, password=password1, family=family)
         login(request, user)
         return redirect('dash')  # Replace 'home' with your home page URL name
 

@@ -1,10 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect   
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Car, Residency
 # Create your views here.
 
-def index(request): 
-    context = {'output':"property page"}
+def index(request, id):
+    items = Car.objects.filter(owner=request.user)
+    context = {'output' : "property page"}
     return render(request, 'dash/property.html', context)
 
 def SaveCar(request):
@@ -25,13 +26,17 @@ def SaveCar(request):
         )
         new_car.save()
 
-        return redirect('index')
+        return redirect('property-home')
     
-def EditCar():
+def EditCar(request, id):
+    item = get_object_or_404(Car, id=id)
     pass
 
-def DelCar():
-    pass
+def DelCar(request, id):
+    item = get_object_or_404(Car, id=id)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('property-home')
 
 def SaveResidency(request):
     if request.method == 'POST':
@@ -53,10 +58,13 @@ def SaveResidency(request):
         )
         new_residency.save()
 
-        return redirect('index')
+        return redirect('property-home')
     
 def EditResidency():
     pass
 
-def DelResidency():
-    pass
+def DelResidency(request, id):
+    item = get_object_or_404(Residency, id=id)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('property-home')

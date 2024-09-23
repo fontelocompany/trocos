@@ -1,7 +1,11 @@
 from django.db import models
+from users.models import User, Families
 
 # Create your models here.
 class Car(models.Model):
+    # family = models.ForeignKey(Families, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
     year = models.PositiveIntegerField(null=False) # limit by year from 1900 to current year
     make = models.CharField(max_length=50)
     model = models.CharField(max_length=150)
@@ -13,6 +17,9 @@ class Car(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class Residency(models.Model):
+    # family = models.ForeignKey(Families, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
     type = models.TextField() # house, apartment, farm. change when frontend is implemented
 
     name = models.CharField(max_length=150, null=False)

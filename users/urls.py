@@ -10,7 +10,7 @@ urlpatterns = [
 
 
     # Settings
-    path('settings/', views.SettingsHome, name="settings"),
+    path('settings', views.SettingsHome, name="settings"),
     path('settings/user', views.UserSettings, name="user settings"),
     path('settings/family', views.FamilySettings, name="family settings"),
     path('settings/utils', views.UtilSettings, name="utils settings"),
